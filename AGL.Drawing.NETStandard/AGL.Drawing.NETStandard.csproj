@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;NET4;NETCORE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="../automatic-graph-layout/GraphLayout/Drawing/**/*.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="../automatic-graph-layout/GraphLayout/Drawing/obj/**/*.cs" />
+        <Compile Remove="../automatic-graph-layout/GraphLayout/Drawing/bin/**/*.cs" />
+        <Compile Remove="../automatic-graph-layout/GraphLayout/Drawing/Properties/AssemblyInfo.cs" />
+        <Compile Remove="../automatic-graph-layout/GraphLayout/Drawing/AssemblyInfo.cs" />
+        <Compile Remove="GdiUtils.cs" />
+        <Compile Remove="../automatic-graph-layout/GraphLayout/Drawing/**/*.Designer.cs" />
+        <EmbeddedResource Remove="../automatic-graph-layout/GraphLayout/Drawing/obj/**" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\AGL.NETStandard\AGL.NETStandard.csproj" />
+    </ItemGroup>
+
+</Project>

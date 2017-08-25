@@ -4,4 +4,17 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;NET4;NETCORE;PARALLEL35;PERSISTENCE;PHYLOTREE;PARALLEL_SUPPORTED;USE_PHYLOTREE</DefineConstants>
+  </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="../automatic-graph-layout/GraphLayout/MSAGL/**/*.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Remove="../automatic-graph-layout/GraphLayout/MSAGL/obj/**/*.cs" />
+        <Compile Remove="../automatic-graph-layout/GraphLayout/MSAGL/bin/**/*.cs" />
+        <Compile Remove="../automatic-graph-layout/GraphLayout/MSAGL/Properties/AssemblyInfo.cs" />
+        <Compile Remove="../automatic-graph-layout/GraphLayout/MSAGL/**/*.Designer.cs" />
+        <EmbeddedResource Remove="../automatic-graph-layout/GraphLayout/MSAGL/obj/**" />
+    </ItemGroup>
 </Project>

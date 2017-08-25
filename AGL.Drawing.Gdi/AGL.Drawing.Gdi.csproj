@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ZKWeb.System.Drawing" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AGL.Drawing.NETStandard\AGL.Drawing.NETStandard.csproj" />
+    <ProjectReference Include="..\AGL.NETStandard\AGL.NETStandard.csproj" />
+  </ItemGroup>
+
+</Project>
