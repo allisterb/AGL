@@ -15,6 +15,11 @@ namespace AGL.Drawing.Gdi {
             DrawEdges(geometryGraph, pen, graphics);
         }
 
+        public static void Draw2(System.DrawingCore.Rectangle clientRectangle, Microsoft.Msagl.Drawing.Graph graph, GeometryGraph geometryGraph, Graphics graphics)
+        {
+            var dg = Microsoft.Msagl.GraphViewerGdi.DGraph.CreateDGraphAndGeometryInfo(graph, geometryGraph);
+            Microsoft.Msagl.GraphViewerGdi.Draw.DrawPrecalculatedLayoutObject(graphics, dg);
+        }
         public static void SetGraphTransform(GeometryGraph geometryGraph, System.DrawingCore.Rectangle rectangle, Graphics graphics) {
             RectangleF clientRectangle = rectangle;
             var gr = geometryGraph.BoundingBox;
