@@ -566,8 +566,8 @@ namespace Microsoft.Msagl.GraphViewerGdi {
         }
 
         internal static void DrawEdgeArrows(Graphics g, DrawingEdge edge, Color edgeColor, Pen myPen) {
-            //ArrowAtTheEnd(g, edge, edgeColor, myPen);
-            //ArrawAtTheBeginning(g, edge, edgeColor, myPen);
+            ArrowAtTheEnd(g, edge, edgeColor, myPen);
+            ArrawAtTheBeginning(g, edge, edgeColor, myPen);
         }
 
         static void ArrawAtTheBeginning(Graphics g, DrawingEdge edge, Color edgeColor, Pen myPen) {
@@ -599,8 +599,7 @@ namespace Microsoft.Msagl.GraphViewerGdi {
                              edge.ArrowAtTargetPosition);
                 else
                     using (var sb = new SolidBrush(edgeColor))
-                        DrawArrow(g, sb, edge.EdgeCurve.End,
-                                  edge.ArrowAtTargetPosition, edge.Attr.LineWidth, edge.Attr.ArrowheadAtTarget);
+                        DrawArrow(g, sb, edge.EdgeCurve.End, edge.ArrowAtTargetPosition, edge.Attr.LineWidth, edge.Attr.ArrowheadAtTarget);
         }
 
         /// <summary>
