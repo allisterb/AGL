@@ -1093,17 +1093,17 @@ namespace Microsoft.Msagl.GraphViewerGdi {
 
             using (Matrix m = g.Transform) {
                 using (Matrix saveM = m.Clone()) {
-                    //rotate the label around its center
-                    float c = (r.Bottom + r.Top) / 2;
-
-                    using (var m2 = new Matrix(1, 0, 0, -1, 0, 2 * c)) {
-                        m.Multiply(m2);
-                    }
-                    g.Transform = m;
+                    //rotate the label around its center //AB: Why?
+                    //float c = (r.Bottom + r.Top) / 2;
+                    //
+                    //using (var m2 = new Matrix(1, 0, 0, -1, 0, 2 * c)) {
+                      //  m.Multiply(m2);
+                    //}
+                    //g.Transform = m;
                     using (StringFormat stringFormat = StringFormat.GenericTypographic) {
                         g.DrawString(s, f, brush, r.Left, r.Top, stringFormat);
                     }
-                    g.Transform = saveM;
+                    //g.Transform = saveM;
                 }
             }
         }
