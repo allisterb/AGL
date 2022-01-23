@@ -4,6 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0;PARALLEL35;PERSISTENCE;PHYLOTREE;PARALLEL_SUPPORTED;USE_PHYLOTREE;TES</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="ZKWeb.System.Drawing" Version="4.0.1" />
   </ItemGroup>
