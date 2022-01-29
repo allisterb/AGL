@@ -7,10 +7,10 @@
 	using System.Xml;
 	public static class DGMLWriter
 	{
-		public static string Write(Graph g)
+		public static void Write(Stream stream, Graph g)
 		{
-			using (var stringWriter = new StringWriter())
-			using (var xmlWriter = new XmlTextWriter(stringWriter))
+			using (var writer = new StreamWriter(stream))
+			using (var xmlWriter = new XmlTextWriter(writer))
 			{
 				xmlWriter.Formatting = Formatting.Indented;
 				xmlWriter.WriteStartElement("DirectedGraph");
@@ -26,7 +26,7 @@
 					xmlWriter.WriteAttributeString("Id", nodeId);
 					xmlWriter.WriteAttributeString("Label", label);
 
-					if (node.OutEdges.Count() == 0 || node.OutEdges.Count() == 0)
+					if (node.InEdges.Count() == 0 && node.OutEdges.Count() == 0)
 					{
 						xmlWriter.WriteAttributeString("Background", "Yellow");
 					}
@@ -43,7 +43,7 @@
 					xmlWriter.WriteAttributeString("Target", edge.Target);
 					xmlWriter.WriteEndElement();
 				}
-				
+
 				xmlWriter.WriteEndElement();
 				xmlWriter.WriteStartElement("Styles");
 				xmlWriter.WriteStartElement("Style");
@@ -68,7 +68,6 @@
 				xmlWriter.WriteEndElement();
 				xmlWriter.WriteEndElement();
 				xmlWriter.Flush();
-				return stringWriter.ToString();
 			}
 		}
 
