@@ -11,11 +11,11 @@
 
 			foreach (var node in g.Nodes)
 			{
-				sb.AppendFormat("\t{0}[label=\"{1}\"];\n", node.Id, node.LabelText);
+				sb.AppendFormat("\t{0}[label=\"{1}\"];\n", node.Id.Replace(".", "_"), node.LabelText);
 
 				foreach (var edge in g.Edges)
 				{
-					sb.AppendFormat("\t{0} -> {1};\n", edge.Source, edge.Target);
+					sb.AppendFormat("\t{0} -> {1};\n", edge.Source.Replace(".", "_"), edge.Target.Replace(".", "_"));
 				}
 			}
 			sb.AppendLine("}");
