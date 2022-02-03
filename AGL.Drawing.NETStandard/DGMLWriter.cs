@@ -1,6 +1,6 @@
 ﻿namespace Microsoft.Msagl.Drawing
 {
-	using System;
+	using System.Drawing;
 	using System.IO;
 	using System.Linq;
 	using System.Text;
@@ -19,17 +19,13 @@
 
 				foreach (var node in g.Nodes)
 				{
-					var nodeId = Convert.ToString(node.Id);
+					var nodeId = node.Id;
 					var label = node.LabelText;
-
 					xmlWriter.WriteStartElement("Node");
 					xmlWriter.WriteAttributeString("Id", nodeId);
 					xmlWriter.WriteAttributeString("Label", label);
-
-					if (node.InEdges.Count() == 0 && node.OutEdges.Count() == 0)
-					{
-						xmlWriter.WriteAttributeString("Background", "Yellow");
-					}
+					xmlWriter.WriteAttributeString("Background", node.Attr.FillColor.ToString().Trim('"'));
+					
 					xmlWriter.WriteEndElement();
 				}
 
