@@ -10,6 +10,14 @@
 		public static void Write(Stream stream, Graph g)
 		{
 			using (var writer = new StreamWriter(stream))
+            {
+				Write(writer, g);
+            }
+			
+		}
+
+		public static void Write(TextWriter writer, Graph g)
+        {
 			using (var xmlWriter = new XmlTextWriter(writer))
 			{
 				xmlWriter.Formatting = Formatting.Indented;
@@ -25,7 +33,7 @@
 					xmlWriter.WriteAttributeString("Id", nodeId);
 					xmlWriter.WriteAttributeString("Label", label);
 					xmlWriter.WriteAttributeString("Background", node.Attr.FillColor.ToString().Trim('"'));
-					
+
 					xmlWriter.WriteEndElement();
 				}
 
@@ -66,6 +74,5 @@
 				xmlWriter.Flush();
 			}
 		}
-
 	}
 }
