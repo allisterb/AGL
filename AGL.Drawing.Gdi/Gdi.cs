@@ -19,25 +19,14 @@ using GeometryNode = Microsoft.Msagl.Core.Layout.Node;
 using GeometryEdge = Microsoft.Msagl.Core.Layout.Edge;
 using GeometryPoint = Microsoft.Msagl.Core.Geometry.Point;
 
-public class Drawing
+using AGL.Drawing;
+public class Gdi
 {
-    public static SugiyamaLayoutSettings GetSugiyamaLayout(int minNodeWidth = 2000, int minNodeHeight = 1000, double rotateBy = 0.0)
-    {
-        SugiyamaLayoutSettings sugiyamaSettings = new SugiyamaLayoutSettings
-        {
-            Transformation = PlaneTransformation.Rotation(rotateBy),
-            EdgeRoutingSettings = { EdgeRoutingMode = EdgeRoutingMode.SugiyamaSplines },
-            MinNodeHeight = minNodeHeight,
-            MinNodeWidth = minNodeWidth
-
-        };
-        return sugiyamaSettings;
-    }
-
+    
     public static byte[] DrawPng(Graph graph, int width = 2000, int height = 2000, double rotateBy = 0.0)
     {
         graph.GeometryGraph = new GeometryGraph();
-        var layout = GetSugiyamaLayout(5, 10, rotateBy);
+        var layout = Drawing.GetSugiyamaLayout(5, 10, rotateBy);
         graph.LayoutAlgorithmSettings = layout;
         int nodeWidth = graph.Nodes.Max(n => n.LabelText.Length) * 9;
         foreach (Node n in graph.Nodes)
@@ -79,7 +68,7 @@ public class Drawing
     public static byte[] DrawJpg(Graph graph, int width = 2000, int height = 2000, double rotateBy = 0.0)
     {
         graph.GeometryGraph = new GeometryGraph();
-        var layout = GetSugiyamaLayout(5, 10, rotateBy);
+        var layout = Drawing.GetSugiyamaLayout(5, 10, rotateBy);
         graph.LayoutAlgorithmSettings = layout;
         int nodeWidth = graph.Nodes.Max(n => n.LabelText.Length) * 9;
         foreach (Node n in graph.Nodes)
@@ -121,7 +110,7 @@ public class Drawing
     public static byte[] DrawBmp(Graph graph, int width = 2000, int height = 2000, double rotateBy = 0.0)
     {
         graph.GeometryGraph = new GeometryGraph();
-        var layout = GetSugiyamaLayout(5, 10, rotateBy);
+        var layout = Drawing.GetSugiyamaLayout(5, 10, rotateBy);
         graph.LayoutAlgorithmSettings = layout;
         int nodeWidth = graph.Nodes.Max(n => n.LabelText.Length) * 9;
         foreach (Node n in graph.Nodes)
